@@ -1,0 +1,26 @@
+{
+  "label": "Gets a conversation's history",
+  "name": "conversationsHistorySlack",
+  "category": "integrations",
+  "description": "Fetches a conversation's history of messages and events.\n\nReference docs\n",
+  "inputs": [
+    {
+      "label": "Channel",
+      "name": "channel",
+      "description": "Conversation ID to fetch history for.",
+      "type": "text",
+      "required": "true",
+      "options": {
+        "allowContextSelector": "true"
+      }
+    }
+  ],
+  "outputs": [
+    {
+      "label": "Response",
+      "name": "response",
+      "type": "object",
+      "description": "The response to external URL"
+    }
+  ]
+}

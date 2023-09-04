@@ -1,0 +1,36 @@
+{
+  "label": "Deletes a message.",
+  "name": "deleteMessageToChannelSlack",
+  "category": "integrations",
+  "description": "This step deletes a message from a conversation.",
+  "inputs": [
+    {
+      "label": "Channel",
+      "name": "channel",
+      "description": "Channel containing the message to be deleted.",
+      "type": "text",
+      "required": "true",
+      "options": {
+        "allowContextSelector": "true"
+      }
+    },
+    {
+      "label": "Message Id",
+      "name": "messageId",
+      "description": "Timestamp of the message to be deleted. Example\n\"1405894322.002768\"",
+      "type": "text",
+      "required": "true",
+      "options": {
+        "allowContextSelector": "true"
+      }
+    }
+  ],
+  "outputs": [
+    {
+      "label": "Response",
+      "name": "response",
+      "type": "object",
+      "description": "The response to external URL"
+    }
+  ]
+}

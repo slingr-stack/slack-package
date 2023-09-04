@@ -1,0 +1,26 @@
+{
+  "label": "Gets information about a user.",
+  "name": "userInfoSlack",
+  "category": "integrations",
+  "description": "This step returns information about a member of a workspace.",
+  "inputs": [
+    {
+      "label": "User Id",
+      "name": "userId",
+      "description": "User id to get info",
+      "type": "text",
+      "required": "true",
+      "options": {
+        "allowContextSelector": "true"
+      }
+    }
+  ],
+  "outputs": [
+    {
+      "label": "Response",
+      "name": "response",
+      "type": "object",
+      "description": "The response to external URL"
+    }
+  ]
+}
