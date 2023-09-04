@@ -43,7 +43,6 @@ step.apiCallSlack = function (inputs) {
 	inputsLogic.params = isObject(inputsLogic.params) ? inputsLogic.params : stringToObject(inputsLogic.params);
 	inputsLogic.body = isObject(inputsLogic.body) ? inputsLogic.body : JSON.parse(inputsLogic.body);
 
-
 	var options = {
 		url: config.get("SLACK_API_BASE_URL") + parse(inputsLogic.url.urlValue, inputsLogic.url.paramsValue),
 		params: inputsLogic.params,
@@ -57,6 +56,8 @@ step.apiCallSlack = function (inputs) {
 		connectionTimeout: inputsLogic.connectionTimeout,
 		readTimeout: inputsLogic.readTimeout
 	}
+
+	options = setRequestHeaders(options);
 
 	switch (inputsLogic.method.toLowerCase()) {
 		case 'get':
@@ -78,8 +79,6 @@ step.apiCallSlack = function (inputs) {
 		case 'trace':
 			return httpService.trace(options);
 	}
-
-	//REPLACE THIS WITH YOUR OWN CODE
 
 	return null;
 };
@@ -121,3 +120,21 @@ var stringToObject = function (obj) {
 	}
 	return null;
 };
+
+function setRequestHeaders(options) {
+	var headers = options.headers || {};
+	var authorization = options.authorization || {};
+	if (config.get("userApiToken")) {
+		sys.logs.debug('[slack] Set header bearer');
+		authorization = mergeJSON(authorization, {
+			type: "oauth2",
+			accessToken: config.get('userApiToken'),
+			headerPrefix: "Bearer"
+		});
+		options.authorization = authorization;
+	}
+	headers = mergeJSON(headers, {"Content-Type": "application/json"});
+
+	options.headers = headers;
+	return options;
+}

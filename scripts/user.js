@@ -1010,7 +1010,7 @@ function setRequestHeaders(options) {
         sys.logs.debug('[slack] Set header bearer');
         authorization = mergeJSON(authorization, {
             type: "oauth2",
-            accessToken: sys.storage.get('userApiToken'),
+            accessToken: config.get('userApiToken'),
             headerPrefix: "Bearer"
         });
         options.authorization = authorization;
@@ -1020,7 +1020,6 @@ function setRequestHeaders(options) {
     options.headers = headers;
     return options;
 }
-
 
 function mergeJSON (json1, json2) {
     const result = {};
