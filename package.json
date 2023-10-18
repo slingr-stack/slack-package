@@ -100,42 +100,42 @@
     "metadata": [
         {
             "type": "script",
-            "namespace": "api",
+            "namespace": "user",
             "path": "/scripts/user.js"
         },
         {
             "type": "script",
-            "namespace": "api",
+            "namespace": "bot",
             "path": "/scripts/bot.js"
         },
         {
             "type": "flowStep",
-            "namespace": "steps",
+            "namespace": "apiCallSlack",
             "path": "/flowSteps/apiCallSlack"
         },
         {
             "type": "flowStep",
-            "namespace": "steps",
+            "namespace": "conversationsHistorySlack",
             "path": "/flowSteps/conversationsHistorySlack"
         },
         {
             "type": "flowStep",
-            "namespace": "steps",
+            "namespace": "deleteMessageToChannelSlack",
             "path": "/flowSteps/deleteMessageToChannelSlack"
         },
         {
             "type": "flowStep",
-            "namespace": "steps",
+            "namespace": "sendMessageToChannelSlack",
             "path": "/flowSteps/sendMessageToChannelSlack"
         },
         {
             "type": "flowStep",
-            "namespace": "steps",
+            "namespace": "updateMessageToChannelSlack",
             "path": "/flowSteps/updateMessageToChannelSlack"
         },
         {
             "type": "flowStep",
-            "namespace": "steps",
+            "namespace": "userInfoSlack",
             "path": "/flowSteps/userInfoSlack"
         }
     ]
