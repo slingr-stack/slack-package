@@ -112,31 +112,6 @@
             "type": "flowStep",
             "namespace": "apiCallSlack",
             "path": "/flowSteps/apiCallSlack"
-        },
-        {
-            "type": "flowStep",
-            "namespace": "conversationsHistorySlack",
-            "path": "/flowSteps/conversationsHistorySlack"
-        },
-        {
-            "type": "flowStep",
-            "namespace": "deleteMessageToChannelSlack",
-            "path": "/flowSteps/deleteMessageToChannelSlack"
-        },
-        {
-            "type": "flowStep",
-            "namespace": "sendMessageToChannelSlack",
-            "path": "/flowSteps/sendMessageToChannelSlack"
-        },
-        {
-            "type": "flowStep",
-            "namespace": "updateMessageToChannelSlack",
-            "path": "/flowSteps/updateMessageToChannelSlack"
-        },
-        {
-            "type": "flowStep",
-            "namespace": "userInfoSlack",
-            "path": "/flowSteps/userInfoSlack"
         }
     ]
 }

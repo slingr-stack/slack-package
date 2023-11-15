@@ -4,282 +4,55 @@
   "category": "integrations",
   "description": "This flow step will send generic request to slack",
   "inputs": [
-    {
-      "label": "Url",
-      "name": "url",
-      "description": "The method and path to which this endpoint is to send requests in a generic way.",
-      "type": "urlParams",
-      "required": "true",
-      "options": {
-        "type": "dropDown",
-        "possibleValues": [
-            {
-              "label": "POST /api.test"
-            },
-            {
-              "label": "POST /auth.test"
-            },
-            {
-              "label": "POST /chat.delete"
-            },
-            {
-              "label": "POST /chat.meMessage"
-            },
-            {
-              "label": "POST /chat.postMessage"
-            },
-            {
-              "label": "POST /chat.unfurl"
-            },
-            {
-              "label": "POST /chat.update"
-            },
-            {
-              "label": "POST /conversations.archive"
-            },
-            {
-              "label": "POST /conversations.close"
-            },
-            {
-              "label": "POST /conversations.create"
-            },
-            {
-              "label": "POST /conversations.invite"
-            },
-            {
-              "label": "POST /conversations.join"
-            },
-            {
-              "label": "POST /conversations.kick"
-            },
-            {
-              "label": "POST /conversations.leave"
-            },
-            {
-              "label": "POST /conversations.open"
-            },
-            {
-              "label": "POST /conversations.rename"
-            },
-            {
-              "label": "POST /conversations.setPurpose"
-            },
-            {
-              "label": "POST /conversations.setTopic"
-            },
-            {
-              "label": "POST /conversations.unarchive"
-            },
-            {
-              "label": "POST /dialog.open"
-            },
-            {
-              "label": "POST /views.open"
-            },
-            {
-              "label": "POST /views.update"
-            },
-            {
-              "label": "POST /views.publish"
-            },
-            {
-              "label": "POST /views.push"
-            },
-            {
-              "label": "POST /dnd.endDnd"
-            },
-            {
-              "label": "POST /dnd.endSnooze"
-            },
-            {
-              "label": "POST /files.comments.delete"
-            },
-            {
-              "label": "POST /files.delete"
-            },
-            {
-              "label": "POST /files.revokePublicURL"
-            },
-            {
-              "label": "POST /files.sharedPublicURL"
-            },
-            {
-              "label": "POST /files.upload"
-            },
-            {
-              "label": "POST /oauth.access"
-            },
-            {
-              "label": "POST /pins.add"
-            },
-            {
-              "label": "POST /pins.remove"
-            },
-            {
-              "label": "POST /reactions.add"
-            },
-            {
-              "label": "POST /reactions.remove"
-            },
-            {
-              "label": "POST /reminders.add"
-            },
-            {
-              "label": "POST /reminders.complete"
-            },
-            {
-              "label": "POST /reminders.delete"
-            },
-            {
-              "label": "POST /stars.add"
-            },
-            {
-              "label": "POST /stars.remove"
-            },
-            {
-              "label": "POST /usergroups.create"
-            },
-            {
-              "label": "POST /usergroups.disable"
-            },
-            {
-              "label": "POST /usergroups.enable"
-            },
-            {
-              "label": "POST /usergroups.update"
-            },
-            {
-              "label": "POST /usergroups.users.update"
-            },
-            {
-              "label": "POST /users.setActive"
-            },
-            {
-              "label": "POST /users.setPhoto"
-            },
-            {
-              "label": "POST /users.setPresence"
-            },
-            {
-              "label": "POST /users.profile.set"
-            },
-            {
-              "label": "GET /auth.revoke"
-            },
-            {
-              "label": "GET /bots.info"
-            },
-            {
-              "label": "GET /conversations.history"
-            },
-            {
-              "label": "GET /conversations.info"
-            },
-            {
-              "label": "GET /conversations.list"
-            },
-            {
-              "label": "GET /conversations.members"
-            },
-            {
-              "label": "GET /conversations.replies"
-            },
-            {
-              "label": "GET /dnd.info"
-            },
-            {
-              "label": "GET /dnd.setSnooze"
-            },
-            {
-              "label": "GET /dnd.teamInfo"
-            },
-            {
-              "label": "GET /admin.emoji.list"
-            },
-            {
-              "label": "GET /files.info"
-            },
-            {
-              "label": "GET /files.list"
-            },
-            {
-              "label": "GET /pins.list"
-            },
-            {
-              "label": "GET /reactions.get"
-            },
-            {
-              "label": "GET /reactions.list"
-            },
-            {
-              "label": "GET /reminders.info"
-            },
-            {
-              "label": "GET /reminders.list"
-            },
-            {
-              "label": "GET /rtm.start"
-            },
-            {
-              "label": "GET /rtm.connect"
-            },
-            {
-              "label": "GET /search.all"
-            },
-            {
-              "label": "GET /search.files"
-            },
-            {
-              "label": "GET /search.messages"
-            },
-            {
-              "label": "GET /stars.list"
-            },
-            {
-              "label": "GET /team.accessLogs"
-            },
-            {
-              "label": "GET /team.billableInfo"
-            },
-            {
-              "label": "GET /team.info"
-            },
-            {
-              "label": "GET /team.integrationLogs"
-            },
-            {
-              "label": "GET /team.profile.get"
-            },
-            {
-              "label": "GET /usergroups.list"
-            },
-            {
-              "label": "GET /usergroups.users.list"
-            },
-            {
-              "label": "GET /users.deletePhoto"
-            },
-            {
-              "label": "GET /users.getPresence"
-            },
-            {
-              "label": "GET /users.identity"
-            },
-            {
-              "label": "GET /users.info"
-            },
-            {
-              "label": "GET /users.list"
-            },
-            {
-              "label": "GET /users.lookupByEmail"
-            },
-            {
-              "label": "GET /users.profile.get"
-            }
-        ]
-      }
-    },
+      {
+          "label": "Method",
+          "name": "method",
+          "description": "The method to which this service will send the request.",
+          "type": "dropDown",
+          "multiplicity": "one",
+          "required": "true",
+          "defaultValue": "get",
+          "options": {
+              "possibleValues": [
+                  {
+                      "label": "GET",
+                      "name": "get"
+                  },
+                  {
+                      "label": "POST",
+                      "name": "post"
+                  },
+                  {
+                      "label": "PUT",
+                      "name": "put"
+                  },
+                  {
+                      "label": "DELETE",
+                      "name": "delete"
+                  },
+                  {
+                      "label": "PATCH",
+                      "name": "patch"
+                  },
+                  {
+                      "label": "OPTIONS",
+                      "name": "options"
+                  },
+                  {
+                      "label": "HEAD",
+                      "name": "head"
+                  }
+              ],
+              "allowContextSelector": "false"
+          }
+      },
+      {
+          "label": "Path",
+          "name": "path",
+          "description": "The URL to which this service will send the request.",
+          "type": "urlParams",
+          "required": "true"
+      },
     {
       "label": "Headers",
       "name": "headers",
