@@ -3,7 +3,7 @@
  ****************************************************/
 
 let httpReference = dependencies.http;
-
+let variable = null;
 let httpDependency = {
     get: httpReference.get,
     post: httpReference.post,
