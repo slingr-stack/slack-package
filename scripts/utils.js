@@ -6,7 +6,7 @@
  * @param {string} signature256         - The signature256 to be checked.
  * @return {boolean}                    - True if the signature is valid, false otherwise.
  */
-exports.utils.verifySignature = function (body, signature, signature256) {
+exports.verifySignature = function (body, signature, signature256) {
     sys.logs.info("Checking signature");
     let verified = true;
     let verified256 = true;
