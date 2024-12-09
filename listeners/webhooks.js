@@ -35,7 +35,7 @@ listeners.slackChallenge = {
     },
     callback: function(event) {
         let body = event.data.body;
-        if (pkg.slack.utils.verifySignature(body.token)) {
+        if (pkg.slack.utils.verifyToken(body.token)) {
             if (body.type === 'url_verification') {
                 return {challenge: body.challenge};
             }
