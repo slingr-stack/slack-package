@@ -28,7 +28,7 @@ listeners.slackChallenge = {
     type: 'service',
     options: {
         service: 'http',
-        event: 'webhook',
+        event: 'webhookSync',
         matching: {
             path: '/challenge',
         }
@@ -39,7 +39,6 @@ listeners.slackChallenge = {
             if (body.type === 'url_verification') {
                 return JSON.stringify({challenge: body.challenge});
             }
-            sys.events.triggerEvent("slack:event", event.data.body);
         } else {
             sys.logs.warn('[slack] Invalid verification token for event');
         }
