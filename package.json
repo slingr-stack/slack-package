@@ -107,11 +107,10 @@
             "type": "script",
             "namespace": "bot",
             "path": "/scripts/bot.js"
-        },
-        {
-            "type": "flowStep",
-            "namespace": "apiCallSlack",
-            "path": "/flowSteps/apiCallSlack"
+        }, {
+            "type": "listener",
+            "namespace": "webhook",
+            "path": "/listeners/webhook.js"
         }
     ]
 }
