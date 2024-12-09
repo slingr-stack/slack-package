@@ -1,0 +1,36 @@
+{
+  "label": "Send a message to a channel",
+  "name": "sendMessageToChannelSlack",
+  "category": "integrations",
+  "description": "Send a message to a channel",
+  "inputs": [
+    {
+      "label": "Channel",
+      "name": "channel",
+      "description": "The channel to which the message will be sent",
+      "type": "text",
+      "required": "true",
+      "options": {
+        "allowContextSelector": "true"
+      }
+    },
+    {
+      "label": "Message",
+      "name": "message",
+      "description": "The message which will be sent to a channel",
+      "type": "text",
+      "required": "true",
+      "options": {
+        "allowContextSelector": "true"
+      }
+    }
+  ],
+  "outputs": [
+    {
+      "label": "Response",
+      "name": "response",
+      "type": "object",
+      "description": "The response to external URL"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "label": "Updates a message.",
+  "name": "updateMessageToChannelSlack",
+  "category": "integrations",
+  "description": "This step updates a message in a channel.",
+  "inputs": [
+    {
+      "label": "Channel",
+      "name": "channel",
+      "description": "Channel containing the message to be deleted.",
+      "type": "text",
+      "required": "true",
+      "options": {
+        "allowContextSelector": "true"
+      }
+    },
+    {
+      "label": "Message Id",
+      "name": "messageId",
+      "description": "Timestamp of the message to be updated. Example\n\"1405894322.002768\"",
+      "type": "text",
+      "required": "true",
+      "options": {
+        "allowContextSelector": "true"
+      }
+    },
+    {
+      "label": "Message",
+      "name": "message",
+      "description": "New text for the message.",
+      "type": "text",
+      "required": "true",
+      "options": {
+        "allowContextSelector": "true"
+      }
+    }
+  ],
+  "outputs": [
+    {
+      "label": "Response",
+      "name": "response",
+      "type": "object",
+      "description": "The response to external URL"
+    }
+  ]
+}
