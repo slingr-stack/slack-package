@@ -28,9 +28,9 @@ listeners.slackChallenge = {
     type: 'service',
     options: {
         service: 'http',
-        event: 'webhookSync',
+        event: 'webhook',
         matching: {
-            path: '/slack-events/challenge',
+            path: '/challenge',
         }
     },
     callback: function(event) {
