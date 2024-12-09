@@ -110,7 +110,7 @@
         }, {
             "type": "listener",
             "namespace": "webhook",
-            "path": "/listeners/webhook.js"
+            "path": "/listeners/webhooks.js"
         }
     ]
 }
