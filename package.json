@@ -1,6 +1,6 @@
 {
     "name": "slack",
-    "label": "Slack Package",
+    "label": "Slack",
     "dependencies": [
         {
             "type": "service",
