@@ -37,7 +37,7 @@ listeners.slackChallenge = {
         let body = event.data.body;
         if (pkg.slack.utils.verifyToken(body.token)) {
             if (body.type === 'url_verification') {
-                return {challenge: body.challenge};
+                return JSON.stringify({challenge: body.challenge});
             }
             sys.events.triggerEvent("slack:event", event.data.body);
         } else {
