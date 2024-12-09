@@ -107,6 +107,11 @@
             "type": "script",
             "namespace": "bot",
             "path": "/scripts/bot.js"
+        },
+        {
+            "type": "script",
+            "namespace": "utils",
+            "path": "/scripts/utils.js"
         }, {
             "type": "listener",
             "namespace": "webhook",
