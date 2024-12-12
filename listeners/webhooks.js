@@ -18,7 +18,8 @@ listeners.defaultSlackEvents = {
             if (body.type === 'url_verification') {
                 return JSON.stringify({challenge: body.challenge});
             } else {
-                sys.events.triggerEvent("slack:event", event.data.body);
+                sys.events.triggerEvent("slack:webhook", event.data);
+                return;
             }
         } else {
             sys.logs.warn('[slack] Invalid verification token for event');
