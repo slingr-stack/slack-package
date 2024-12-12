@@ -18,8 +18,8 @@ listeners.defaultSlackEvents = {
             if (body.type === 'url_verification') {
                 return JSON.stringify({challenge: body.challenge});
             } else {
+                sys.logs.info('Valid sync webhook received. Triggering event.');
                 sys.events.triggerEvent("slack:webhook", event.data);
-                return;
             }
         } else {
             sys.logs.warn('[slack] Invalid verification token for event');
@@ -43,6 +43,7 @@ listeners.defaultSlackWebhook = {
             if (body.type === 'url_verification') {
                 return JSON.stringify({challenge: body.challenge});
             } else {
+                sys.logs.info('Valid webhook received. Triggering event.');
                 sys.events.triggerEvent("slack:webhook", event.data);
                 return "ok";
             }
