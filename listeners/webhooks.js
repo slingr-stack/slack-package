@@ -3,7 +3,7 @@
  ****************************************************/
 
 listeners.defaultSlackEvents = {
-    label: 'Catch HTTP Slack events',
+    label: 'Catch Slack events',
     type: 'service',
     options: {
         service: 'http',
