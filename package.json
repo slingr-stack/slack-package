@@ -59,9 +59,9 @@
         },
         {
             "name": "SLACK_API_BASE_URL",
-            "label": "Slack API Url",
+            "label": "Slack API URL",
             "type": "label",
-            "value": "https://slack.com/api/"
+            "value": "https://api.slack.com/"
         }
     ],
     "events": [
