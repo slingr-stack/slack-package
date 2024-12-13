@@ -13,10 +13,10 @@ listeners.defaultSlackEvents = {
         }
     },
     callback: function(event) {
-        sys.logs.info('Received Slack webhook. Processing and triggering a package event.');
+        sys.logs.info('[slack] Received Slack webhook. Processing and triggering a package event.');
         if (pkg.slack.utils.verifyToken(event.data.body.token)) {
             if (body.type === 'url_verification') {
-                sys.logs.info('Valid url verification. Sending challenge back.');
+                sys.logs.info('[slack] Valid url verification. Sending challenge back.');
                 return JSON.stringify({challenge: event.data.body.challenge});
             } else {
                 sys.logs.info('Valid slack event received. Triggering event.');
@@ -39,9 +39,9 @@ listeners.defaultSlashCommands = {
         }
     },
     callback: function(event) {
-        sys.logs.info('Received Slack webhook. Processing and triggering a package event.');
+        sys.logs.info('[slack] Received Slack webhook. Processing and triggering a package event.');
         if (pkg.slack.utils.verifyToken(event.data.body.token)) {
-                sys.logs.info('Valid slash command received. Triggering package event.');
+                sys.logs.info('[slack] Valid slash command received. Triggering package event.');
                 sys.events.triggerEvent("slack:slashCommand", event.data);
         } else {
             sys.logs.warn('[slack] Invalid verification token for event');
@@ -60,9 +60,9 @@ listeners.defaultInteractiveMessages = {
         }
     },
     callback: function(event) {
-        sys.logs.info('Received Slack webhook. Processing and triggering a package event.');
+        sys.logs.info('[slack] Received Slack webhook. Processing and triggering a package event.');
         if (pkg.slack.utils.verifyToken(event.data.body.token)) {
-            sys.logs.info('Valid interactive message received. Triggering package event.');
+            sys.logs.info('[slack] Valid interactive message received. Triggering package event.');
             sys.events.triggerEvent("slack:interactiveMessages", event.data);
         } else {
             sys.logs.warn('[slack] Invalid verification token for event');
@@ -81,9 +81,9 @@ listeners.defaultOptonLoads = {
         }
     },
     callback: function(event) {
-        sys.logs.info('Received Slack webhook. Processing and triggering a package event.');
+        sys.logs.info('[slack] Received Slack webhook. Processing and triggering a package event.');
         if (pkg.slack.utils.verifyToken(event.data.body.token)) {
-            sys.logs.info('Valid option load received. Triggering package event.');
+            sys.logs.info('[slack] Valid option load received. Triggering package event.');
             sys.events.triggerEvent("slack:optionsLoad", event.data);
         } else {
             sys.logs.warn('[slack] Invalid verification token for event');
