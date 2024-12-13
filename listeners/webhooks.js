@@ -19,7 +19,7 @@ listeners.defaultSlackEvents = {
                 sys.logs.info('[slack] Valid url verification. Sending challenge back.');
                 return JSON.stringify({challenge: event.data.body.challenge});
             } else {
-                sys.logs.info('Valid slack event received. Triggering event.');
+                sys.logs.info('[slack] Valid slack event received. Triggering event.');
                 sys.events.triggerEvent("slack:event", event.data);
             }
         } else {

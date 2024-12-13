@@ -6,12 +6,7 @@ let httpReference = dependencies.http;
 
 let httpDependency = {
     get: httpReference.get,
-    post: httpReference.post,
-    put: httpReference.put,
-    patch: httpReference.patch,
-    delete: httpReference.delete,
-    head: httpReference.head,
-    options: httpReference.options
+    post: httpReference.post
 };
 
 let httpService = {};
@@ -64,76 +59,6 @@ exports.get = function(path, httpOptions, callbackData, callbacks) {
 exports.post = function(path, httpOptions, callbackData, callbacks) {
     let options = checkHttpOptions(path, httpOptions);
     return httpService.post(Slack(options), callbackData, callbacks);
-};
-
-/**
- * Sends an HTTP PUT request to the specified URL with the provided HTTP options.
- *
- * @param {string} path         - The path to send the PUT request to.
- * @param {object} httpOptions  - The options to be included in the PUT request check http-service documentation.
- * @param {object} callbackData - Additional data to be passed to the callback functions. [optional]
- * @param {object} callbacks    - The callback functions to be called upon completion of the POST request. [optional]
- * @return {object}             - The response of the PUT request.
- */
-exports.put = function(path, httpOptions, callbackData, callbacks) {
-    let options = checkHttpOptions(path, httpOptions);
-    return httpService.put(Slack(options), callbackData, callbacks);
-};
-
-/**
- * Sends an HTTP PATCH request to the specified URL with the provided HTTP options.
- *
- * @param {string} path         - The path to send the PATCH request to.
- * @param {object} httpOptions  - The options to be included in the PATCH request check http-service documentation.
- * @param {object} callbackData - Additional data to be passed to the callback functions. [optional]
- * @param {object} callbacks    - The callback functions to be called upon completion of the POST request. [optional]
- * @return {object}             - The response of the PATCH request.
- */
-exports.patch = function(path, httpOptions, callbackData, callbacks) {
-    let options = checkHttpOptions(path, httpOptions);
-    return httpService.patch(Slack(options), callbackData, callbacks);
-};
-
-/**
- * Sends an HTTP DELETE request to the specified URL with the provided HTTP options.
- *
- * @param {string} path         - The path to send the DELETE request to.
- * @param {object} httpOptions  - The options to be included in the DELETE request check http-service documentation.
- * @param {object} callbackData - Additional data to be passed to the callback functions. [optional]
- * @param {object} callbacks    - The callback functions to be called upon completion of the DELETE request. [optional]
- * @return {object}             - The response of the DELETE request.
- */
-exports.delete = function(path, httpOptions, callbackData, callbacks) {
-    let options = checkHttpOptions(path, httpOptions);
-    return httpService.delete(Slack(options), callbackData, callbacks);
-};
-
-/**
- * Sends an HTTP HEAD request to the specified URL with the provided HTTP options.
- *
- * @param {string} path         - The path to send the HEAD request to.
- * @param {object} httpOptions  - The options to be included in the HEAD request check http-service documentation.
- * @param {object} callbackData - Additional data to be passed to the callback functions. [optional]
- * @param {object} callbacks    - The callback functions to be called upon completion of the HEAD request. [optional]
- * @return {object}             - The response of the HEAD request.
- */
-exports.head = function(path, httpOptions, callbackData, callbacks) {
-    let options = checkHttpOptions(path, httpOptions);
-    return httpService.head(Slack(options), callbackData, callbacks);
-};
-
-/**
- * Sends an HTTP OPTIONS request to the specified URL with the provided HTTP options.
- *
- * @param {string} path         - The path to send the OPTIONS request to.
- * @param {object} httpOptions  - The options to be included in the OPTIONS request check http-service documentation.
- * @param {object} callbackData - Additional data to be passed to the callback functions. [optional]
- * @param {object} callbacks    - The callback functions to be called upon completion of the OPTIONS request. [optional]
- * @return {object}             - The response of the OPTIONS request.
- */
-exports.options = function(path, httpOptions, callbackData, callbacks) {
-    let options = checkHttpOptions(path, httpOptions);
-    return httpService.options(Slack(options), callbackData, callbacks);
 };
 
 /****************************************************

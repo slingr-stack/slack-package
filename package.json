@@ -34,34 +34,34 @@
             "label": "Events URL",
             "description": "This is the URL you need to set as 'Request URL' in 'Event Subscriptions' page of your app. Keep in mind that the endpoint must be deployed in order to interact with the Slack configuration page.",
             "type": "label",
-            "value": "config.WEBHOOK_SYNC_URL+'/events'"
+            "value": "config.WEBHOOK_SYNC_URL+'/events/'"
         },
         {
             "name": "slashCommandsUrl",
             "label": "Slash commands URL",
             "description": "This is the URL you need to set as Request URL in each of your Slash commands.",
             "type": "label",
-            "value": "config.WEBHOOK_URL+'/slashCommands'"
+            "value": "config.WEBHOOK_URL+'/slashCommands/'"
         },
         {
             "name": "interactiveMessagesUrl",
             "label": "Interactive messages URL",
             "description": "This is the URL you need to set as 'Request URL' in 'Interactive Messages' page of your app.",
             "type": "label",
-            "value": "config.WEBHOOK_URL+'/interactiveMessages'"
+            "value": "config.WEBHOOK_URL+'/interactiveMessages/'"
         },
         {
             "name": "optionsLoadUrl",
             "label": "Options load URL",
             "description": "This is the URL you need to set as 'Options Load URL' in 'Interactive Messages' page of your app.",
             "type": "label",
-            "value": "config.WEBHOOK_URL+'/optionsLoad'"
+            "value": "config.WEBHOOK_URL+'/optionsLoad/'"
         },
         {
             "name": "SLACK_API_BASE_URL",
             "label": "Slack API Url",
             "type": "label",
-            "value": "https://slack.com/api"
+            "value": "https://slack.com/api/"
         }
     ],
     "events": [
