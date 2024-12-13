@@ -15,7 +15,7 @@ listeners.defaultSlackEvents = {
     callback: function(event) {
         sys.logs.info('[slack] Received Slack webhook. Processing and triggering a package event.');
         if (pkg.slack.utils.verifyToken(event.data.body.token)) {
-            if (body.type === 'url_verification') {
+            if (event.data.body.type === 'url_verification') {
                 sys.logs.info('[slack] Valid url verification. Sending challenge back.');
                 return JSON.stringify({challenge: event.data.body.challenge});
             } else {
