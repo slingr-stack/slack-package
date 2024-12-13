@@ -48,45 +48,56 @@ Below, we describe the settings that can be configured for the package.
 ### User API Token
 
 This is the user API token you get when installing your app (`OAuth Access Token` field). This token belongs 
-to the user that installed the Slack app, and you can use it in the SLINGR app to call the Slack API on behalf 
+to the user that installed the Slack app, and you can use it in the Slingr app to call the Slack API on behalf 
 of this user instead of using the bot. Please check the [Javascript API](#javascript-api) docs below to indicate
 which token must be used.
 
+**Name**: userApiToken **Type**: text **Mandatory**: false
+
 ### Bot API Token
+
 
 This is the bot API token you get when installing your app (`Bot User OAuth Access Token` field). This is a bot
 token, and it has some limitations when using the web API (see [bot methods](https://api.slack.com/bot-users#bot-methods)).
 When you use the package, you can indicate which token you need to use.
+
+**Name**: botApiToken **Type**: text **Mandatory**: true
 
 ### Verification Token
 
 The verification token is used to validate the slash commands and interactive messages hitting the endpoint. You
 will find it in the `Basic information` of your app in the field `Verification Token`.
 
+**Name**: verificationToken **Type**: text **Mandatory**: false
+
 ### Slash Commands URL
 
 This is a read-only field and indicates the URL you have to configure in your Slack app to receive slash commands
-in your SLINGR app.
+in your Slingr app.<br>
+The Slash Commands URL is a generated URL that follows the pattern `https://<appName>.slingrs.io/<environment>/services/<httpServiceName>/slashCommands`
 
 ### Interactive Messages URL
 
 This is a read-only field and indicates the URL you have to configure in your Slack app to receive interactive
-messages in your SLINGR app.
+messages in your Slingr app.<br>
+The Slash Commands URL is a generated URL that follows the pattern `https://<appName>.slingrs.io/<environment>/services/<httpServiceName>/interactiveMessages`
 
 ### Options Load URL
 
 This is a read-only field and indicates the URL you have to configure in your Slack app to be able to provide
 custom options in dropdowns. This is configured in the same place where you configure the interactive messages
-URL.
+URL.<br>
+The Slash Commands URL is a generated URL that follows the pattern `https://<appName>.slingrs.io/<environment>/services/<httpServiceName>/optionLoads`
 
 ### Events URL
 
 This is a read-only field and indicates the URL you have to configure to subscribe to the events API. Keep in mind
 that the package has to be pushed before configuring the events API in your Slack app because Slack will make
-a test request to validate the URL, which will be valid only when the package and http service are pushed and deployed.
+a test request to validate the URL, which will be valid only when the package and http service are pushed and deployed.<br>
+The Slash Commands URL is a generated URL that follows the pattern `https://<appName>.slingrs.io/<environment>/services/<httpServiceName>/sync/slackEvents`
 
 ## HTTP Requests
-You can make `POST`,`GET` requests to the [slack API](API_URL_HERE) like this:
+You can make `POST`,`GET` requests to the [slack API](https://api.slack.com) like this:
 ```javascript
 var response = pkg.slack.user.post('/reactions.add', body)
 var response = pkg.slack.user.post('/reactions.add')
@@ -96,293 +107,14 @@ var response = pkg.slack.user.get('/team.billableInfo')
 Please take a look at the documentation of the [HTTP service](https://github.com/slingr-stack/http-service)
 for more information about generic requests.
 
-### Conversations History
-
-Gets a conversation's history
-
-<h3>Inputs</h3>
-
-<table>
-    <thead>
-    <tr>
-        <th>Label</th>
-        <th>Type</th>
-        <th>Required</th>
-        <th>Default</th>
-        <th>Visibility</th>
-        <th>Description</th>
-    </tr>
-    </thead>
-    <tbody>
-      <tr>
-          <td>Channel</td>
-          <td>text</td>
-          <td>yes</td>
-          <td> - </td>
-          <td>Always</td>
-          <td>Conversation ID to fetch history for.</td>
-      </tr>
-    </tbody>
-</table>
-
-<h3>Outputs</h3>
-
-<table>
-    <thead>
-    <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td>response</td>
-        <td>object</td>
-        <td>Object resulting from the response to the endpoint call.</td>
-    </tr>
-    </tbody>
-</table>
-
-
-### Delete Message
-
-This step deletes a message from a conversation.
-
-<h3>Inputs</h3>
-
-<table>
-    <thead>
-    <tr>
-        <th>Label</th>
-        <th>Type</th>
-        <th>Required</th>
-        <th>Default</th>
-        <th>Visibility</th>
-        <th>Description</th>
-    </tr>
-    </thead>
-    <tbody>
-      <tr>
-          <td>Channel</td>
-          <td>text</td>
-          <td>yes</td>
-          <td> - </td>
-          <td>Always</td>
-          <td>Channel containing the message to be deleted.</td>
-      </tr>
-      <tr>
-          <td>Message Id</td>
-          <td>text</td>
-          <td>yes</td>
-          <td> - </td>
-          <td>Always</td>
-          <td>Timestamp of the message to be deleted. Example "1405894322.002768"</td>
-      </tr>
-    </tbody>
-</table>
-
-<h3>Outputs</h3>
-
-<table>
-    <thead>
-    <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td>response</td>
-        <td>object</td>
-        <td>Object resulting from the response to the endpoint call.</td>
-    </tr>
-    </tbody>
-</table>
-
-### Send Message
-
-Send a message to a channel.
-
-<h3>Inputs</h3>
-
-<table>
-    <thead>
-    <tr>
-        <th>Label</th>
-        <th>Type</th>
-        <th>Required</th>
-        <th>Default</th>
-        <th>Visibility</th>
-        <th>Description</th>
-    </tr>
-    </thead>
-    <tbody>
-      <tr>
-          <td>Channel</td>
-          <td>text</td>
-          <td>yes</td>
-          <td> - </td>
-          <td>Always</td>
-          <td>Channel containing the message to be deleted.</td>
-      </tr>
-      <tr>
-          <td>Message</td>
-          <td>text</td>
-          <td>yes</td>
-          <td> - </td>
-          <td>Always</td>
-          <td>The message which will be sent to a channel.</td>
-      </tr>
-    </tbody>
-</table>
-
-<h3>Outputs</h3>
-
-<table>
-    <thead>
-    <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td>response</td>
-        <td>object</td>
-        <td>
-            Object resulting from the response to the endpoint call.
-        </td>
-    </tr>
-    </tbody>
-</table>
-
-
-### Update Message
-
-This step updates a message in a channel.
-
-<h3>Inputs</h3>
-
-<table>
-    <thead>
-    <tr>
-        <th>Label</th>
-        <th>Type</th>
-        <th>Required</th>
-        <th>Default</th>
-        <th>Visibility</th>
-        <th>Description</th>
-    </tr>
-    </thead>
-    <tbody>
-      <tr>
-          <td>Channel</td>
-          <td>text</td>
-          <td>yes</td>
-          <td> - </td>
-          <td>Always</td>
-          <td>Channel containing the message to be deleted.</td>
-      </tr>
-      <tr>
-          <td>Message Id</td>
-          <td>text</td>
-          <td>yes</td>
-          <td> - </td>
-          <td>Always</td>
-          <td>Timestamp of the message to be updated. Example "1405894322.002768"</td>
-      </tr>
-      <tr>
-          <td>Message</td>
-          <td>text</td>
-          <td>yes</td>
-          <td> - </td>
-          <td>Always</td>
-          <td>The message which will be sent to a channel</td>
-      </tr>
-    </tbody>
-</table>
-
-<h3>Outputs</h3>
-
-<table>
-    <thead>
-    <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td>response</td>
-        <td>object</td>
-        <td>
-            Object resulting from the response to the endpoint call.
-        </td>
-    </tr>
-    </tbody>
-</table>
-
-### User Info
-
-This step returns information about a member of a workspace.
-
-<h3>Inputs</h3>
-<table>
-    <thead>
-    <tr>
-        <th>Label</th>
-        <th>Type</th>
-        <th>Required</th>
-        <th>Default</th>
-        <th>Visibility</th>
-        <th>Description</th>
-    </tr>
-    </thead>
-    <tbody>
-      <tr>
-          <td>User Id</td>
-          <td>text</td>
-          <td>yes</td>
-          <td> - </td>
-          <td>Always</td>
-          <td>User id to get info</td>
-      </tr>
-    </tbody>
-</table>
-
-<h3>Outputs</h3>
-
-<table>
-    <thead>
-    <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td>response</td>
-        <td>object</td>
-        <td>
-            Object resulting from the response to the endpoint call.
-        </td>
-    </tr>
-    </tbody>
-</table>
-
 ## Dependencies
 * HTTP Service
 
-# About SLINGR
+# About Slingr
 
-SLINGR is a low-code rapid application development platform that accelerates development, with robust architecture for integrations and executing custom workflows and automation.
+Slingr is a low-code rapid application development platform that accelerates development, with robust architecture for integrations and executing custom workflows and automation.
 
-[More info about SLINGR](https://slingr.io)
+[More info about Slingr](https://slingr.io)
 
 # License
 

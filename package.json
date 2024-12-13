@@ -13,13 +13,11 @@
         {
             "name": "userApiToken",
             "label": "User API token",
-            "description": "This is the API token for an user in Slack. Optional.",
             "type": "text"
         },
         {
             "name": "botApiToken",
             "label": "Bot API token",
-            "description": "This is the API token for a bot user in Slack.",
             "type": "text",
             "required": true
         },
@@ -34,28 +32,28 @@
             "label": "Events URL",
             "description": "This is the URL you need to set as 'Request URL' in 'Event Subscriptions' page of your app. Keep in mind that the endpoint must be deployed in order to interact with the Slack configuration page.",
             "type": "label",
-            "value": "config.WEBHOOK_SYNC_URL+'/events/'"
+            "value": "config.SERVICE_BASE_URL+'/sync/slackEvents/'"
         },
         {
             "name": "slashCommandsUrl",
             "label": "Slash commands URL",
             "description": "This is the URL you need to set as Request URL in each of your Slash commands.",
             "type": "label",
-            "value": "config.WEBHOOK_URL+'/slashCommands/'"
+            "value": "config.SERVICE_BASE_URL+'/slashCommands/'"
         },
         {
             "name": "interactiveMessagesUrl",
             "label": "Interactive messages URL",
             "description": "This is the URL you need to set as 'Request URL' in 'Interactive Messages' page of your app.",
             "type": "label",
-            "value": "config.WEBHOOK_URL+'/interactiveMessages/'"
+            "value": "config.SERVICE_BASE_URL+'/interactiveMessages/'"
         },
         {
             "name": "optionsLoadUrl",
             "label": "Options load URL",
             "description": "This is the URL you need to set as 'Options Load URL' in 'Interactive Messages' page of your app.",
             "type": "label",
-            "value": "config.WEBHOOK_URL+'/optionsLoad/'"
+            "value": "config.SERVICE_BASE_URL+'/optionsLoad/'"
         },
         {
             "name": "SLACK_API_BASE_URL",
@@ -66,8 +64,8 @@
     ],
     "events": [
         {
-            "label": "Event",
-            "name": "event",
+            "label": "Slack Event",
+            "name": "slackEvent",
             "description": "Happens when any event from events API is received from Slack."
         },
         {

@@ -9,7 +9,7 @@ listeners.defaultSlackEvents = {
         service: 'http',
         event: 'webhookSync',
         matching: {
-            path: '/slack/events',
+            path: '/slackEvents',
         }
     },
     callback: function(event) {
@@ -20,7 +20,7 @@ listeners.defaultSlackEvents = {
                 return JSON.stringify({challenge: event.data.body.challenge});
             } else {
                 sys.logs.info('[slack] Valid slack event received. Triggering event.');
-                sys.events.triggerEvent("slack:event", event.data);
+                sys.events.triggerEvent("slack:slackEvent", event.data);
             }
         } else {
             sys.logs.warn('[slack] Invalid verification token for event');
@@ -35,7 +35,7 @@ listeners.defaultSlashCommands = {
         service: 'http',
         event: 'webhook',
         matching: {
-            path: '/slack/slashCommands',
+            path: '/slashCommands',
         }
     },
     callback: function(event) {
@@ -56,14 +56,14 @@ listeners.defaultInteractiveMessages = {
         service: 'http',
         event: 'webhook',
         matching: {
-            path: '/slack/interactiveMessages',
+            path: '/interactiveMessages',
         }
     },
     callback: function(event) {
         sys.logs.info('[slack] Received Slack webhook. Processing and triggering a package event.');
         if (pkg.slack.utils.verifyToken(event.data.body.token)) {
             sys.logs.info('[slack] Valid interactive message received. Triggering package event.');
-            sys.events.triggerEvent("slack:interactiveMessages", event.data);
+            sys.events.triggerEvent("slack:interactiveMessage", event.data);
         } else {
             sys.logs.warn('[slack] Invalid verification token for event');
         }
@@ -77,7 +77,7 @@ listeners.defaultOptonLoads = {
         service: 'http',
         event: 'webhook',
         matching: {
-            path: '/slack/optionsLoad',
+            path: '/optionsLoad',
         }
     },
     callback: function(event) {
