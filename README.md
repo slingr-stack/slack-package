@@ -96,7 +96,9 @@ that the package has to be pushed before configuring the events API in your Slac
 a test request to validate the URL, which will be valid only when the package and http service are pushed and deployed.<br>
 The Slash Commands URL is a generated URL that follows the pattern `https://<appName>.slingrs.io/<environment>/services/<httpServiceName>/sync/slackEvents`
 
-## HTTP Requests
+## Javascript API
+
+### HTTP Requests
 You can make `POST`,`GET` requests to the [slack API](https://api.slack.com) like this:
 ```javascript
 var response = pkg.slack.user.post('/reactions.add', body)

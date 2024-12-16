@@ -59,7 +59,7 @@
             "name": "SLACK_API_BASE_URL",
             "label": "Slack API URL",
             "type": "label",
-            "value": "https://api.slack.com/"
+            "value": "https://slack.com/api"
         }
     ],
     "events": [

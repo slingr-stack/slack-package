@@ -3,7 +3,7 @@
  ****************************************************/
 
 listeners.defaultSlackEvents = {
-    label: 'Catch Slack events',
+    label: 'Catch Slack Events',
     type: 'service',
     options: {
         service: 'http',
@@ -33,7 +33,7 @@ listeners.defaultSlashCommands = {
     type: 'service',
     options: {
         service: 'http',
-        event: 'webhook',
+        event: 'webhookSync',
         matching: {
             path: '/slashCommands',
         }
