@@ -39,7 +39,7 @@
             "label": "Slash commands URL",
             "description": "This is the URL you need to set as Request URL in each of your Slash commands.",
             "type": "label",
-            "value": "config.SERVICE_BASE_URL+'/slashCommands/'"
+            "value": "config.SERVICE_BASE_URL+'/sync/slashCommands/'"
         },
         {
             "name": "interactiveMessagesUrl",
