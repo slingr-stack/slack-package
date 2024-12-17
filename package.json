@@ -32,28 +32,28 @@
             "label": "Events URL",
             "description": "This is the URL you need to set as 'Request URL' in 'Event Subscriptions' page of your app. Keep in mind that the endpoint must be deployed in order to interact with the Slack configuration page.",
             "type": "label",
-            "value": "config.SERVICE_BASE_URL+'/sync/slackEvents/'"
+            "value": "config.SERVER_URL+'/'+config.ENV+'/services/'+config.SERVICE_NAME+'/sync/slackEvents/'"
         },
         {
             "name": "slashCommandsUrl",
             "label": "Slash commands URL",
             "description": "This is the URL you need to set as Request URL in each of your Slash commands.",
             "type": "label",
-            "value": "config.SERVICE_BASE_URL+'/sync/slashCommands/'"
+            "value": "config.SERVER_URL+'/'+config.ENV+'/services/'+config.SERVICE_NAME+'/sync/slashCommands/'"
         },
         {
             "name": "interactiveMessagesUrl",
             "label": "Interactive messages URL",
             "description": "This is the URL you need to set as 'Request URL' in 'Interactive Messages' page of your app.",
             "type": "label",
-            "value": "config.SERVICE_BASE_URL+'/interactiveMessages/'"
+            "value": "config.SERVER_URL+'/'+config.ENV+'/services/'+config.SERVICE_NAME+'/interactiveMessages/'"
         },
         {
             "name": "optionsLoadUrl",
             "label": "Options load URL",
             "description": "This is the URL you need to set as 'Options Load URL' in 'Interactive Messages' page of your app.",
             "type": "label",
-            "value": "config.SERVICE_BASE_URL+'/optionsLoad/'"
+            "value": "config.SERVER_URL+'/'+config.ENV+'/services/'+config.SERVICE_NAME+'/optionsLoad/'"
         },
         {
             "name": "SLACK_API_BASE_URL",
