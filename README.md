@@ -76,26 +76,38 @@ This is a read-only field and indicates the URL you have to configure in your Sl
 in your Slingr app.<br>
 The Slash Commands URL is a generated URL that follows the pattern `https://<appName>.slingrs.io/<environment>/services/<httpServiceName>/slashCommands`
 
+To set this URL go to your Slack app page:<br>
+Slash Commands > Create New Command > Request URL
+
 ### Interactive Messages URL
 
 This is a read-only field and indicates the URL you have to configure in your Slack app to receive interactive
 messages in your Slingr app.<br>
-The Slash Commands URL is a generated URL that follows the pattern `https://<appName>.slingrs.io/<environment>/services/<httpServiceName>/interactiveMessages`
+The Interactive Messages URL is a generated URL that follows the pattern `https://<appName>.slingrs.io/<environment>/services/<httpServiceName>/interactiveMessages`
+
+To set this URL go to your Slack app page:<br>
+Interactivity & Shortcuts > Request URL
 
 ### Options Load URL
 
 This is a read-only field and indicates the URL you have to configure in your Slack app to be able to provide
 custom options in dropdowns. This is configured in the same place where you configure the interactive messages
 URL.<br>
-The Slash Commands URL is a generated URL that follows the pattern `https://<appName>.slingrs.io/<environment>/services/<httpServiceName>/optionLoads`
+The Options Load URL is a generated URL that follows the pattern `https://<appName>.slingrs.io/<environment>/services/<httpServiceName>/optionLoads`
+
+To set this URL go to your Slack app page:<br>
+Interactivity & Shortcuts > Select Menus > Options Load URL
 
 ### Events URL
 
 This is a read-only field and indicates the URL you have to configure to subscribe to the events API. Keep in mind
 that the package has to be pushed before configuring the events API in your Slack app because Slack will make
 a test request to validate the URL, which will be valid only when the package and http service are pushed and deployed.<br>
-The Slash Commands URL is a generated URL that follows the pattern `https://<appName>.slingrs.io/<environment>/services/<httpServiceName>/sync/slackEvents`
+The Events URL is a generated URL that follows the pattern `https://<appName>.slingrs.io/<environment>/services/<httpServiceName>/sync/slackEvents`
 
+To set this URL go to your Slack app page:<br>
+Event Subscriptions > Request URL
+ 
 ## Javascript API
 
 ### HTTP Requests
