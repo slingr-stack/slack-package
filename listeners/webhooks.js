@@ -21,7 +21,7 @@ listeners.defaultSlackEvents = {
             } else {
                 sys.logs.info('[slack] Valid slack event received. Triggering event.');
                 sys.events.triggerEvent("slack:slackEvent", event.data);
-                return pkg.slack.utils.getConfiguration("slackEvent")(event.data);
+                return app.controller.slack.slackEvent(event.data);
             }
         } else {
             sys.logs.warn('[slack] Invalid verification token for event');
@@ -44,7 +44,7 @@ listeners.defaultSlashCommands = {
         if (pkg.slack.utils.verifyToken(event.data.body.token) || pkg.slack.utils.verifyToken(event.data.body.payload.token)) {
                 sys.logs.info('[slack] Valid slash command received. Triggering package event.');
                 sys.events.triggerEvent("slack:slashCommand", event.data);
-                return pkg.slack.utils.getConfiguration("slashCommand")(event.data);
+                return app.controller.slack.slashCommand(event.data);
         } else {
             sys.logs.warn('[slack] Invalid verification token for event slash command');
         }

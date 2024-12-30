@@ -29,28 +29,16 @@
         {
             "name": "eventsUrl",
             "label": "Events URL",
-            "description": "This is the URL you need to set as 'Request URL' in 'Event Subscriptions' page of your app. Keep in mind that the endpoint must be deployed in order to interact with the Slack configuration page.",
+            "description": "This is the URL you need to set as 'Request URL' in 'Event Subscriptions' page of your app. Keep in mind that the endpoint must be deployed in order to interact with the Slack configuration page. Callback function must be defined on libraries: app.controller.slack.slackEvent",
             "type": "label",
             "value": "config.SERVER_URL+'/'+config.ENV+'/services/'+config.SERVICE_NAME+'/sync/slackEvents/'"
         },
         {
-            "label": "Slack Event",
-            "name": "slackEvent",
-            "description": "Function called when a Slack event is triggered. I.e. app.controller.slack.slackEvent",
-            "type": "script"
-        },
-        {
             "name": "slashCommandsUrl",
             "label": "Slash commands URL",
-            "description": "This is the URL you need to set as Request URL in each of your Slash commands.",
+            "description": "This is the URL you need to set as Request URL in each of your Slash commands. Callback function must be defined on libraries: app.controller.slack.slashCommand",
             "type": "label",
             "value": "config.SERVER_URL+'/'+config.ENV+'/services/'+config.SERVICE_NAME+'/sync/slashCommands/'"
-        },
-        {
-            "label": "Slash Command",
-            "name": "slashCommand",
-            "description": "Function called when a Slack event is triggered. I.e. app.controller.slack.slashCommand",
-            "type": "script"
         },
         {
             "name": "interactiveMessagesUrl",
