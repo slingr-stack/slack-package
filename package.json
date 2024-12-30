@@ -75,6 +75,16 @@
     ],
     "events": [
         {
+            "label": "Slack Event",
+            "name": "slackEvent",
+            "description": "Happens when any event from events API is received from Slack."
+        },
+        {
+            "label": "Slash Command",
+            "name": "slashCommand",
+            "description": "Happens when a slash command handled by the endpoint is called."
+        },
+        {
             "label": "Interactive Message",
             "name": "interactiveMessage",
             "description": "Happens when a button in a message is pushed."
