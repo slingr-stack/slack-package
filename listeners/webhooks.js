@@ -44,7 +44,7 @@ listeners.defaultSlashCommands = {
         if (pkg.slack.utils.verifyToken(event.data.body.token) || pkg.slack.utils.verifyToken(event.data.body.payload.token)) {
                 sys.logs.info('[slack] Valid slash command received. Triggering package event.');
                 sys.events.triggerEvent("slack:slashCommand", event.data);
-                return pkg.slack.utils.getConfiguration("slashCommands")(event.data);
+                return pkg.slack.utils.getConfiguration("slashCommand")(event.data);
         } else {
             sys.logs.warn('[slack] Invalid verification token for event slash command');
         }
