@@ -45,50 +45,50 @@ Other things you need to take into account:
   
 Below, we describe the settings that can be configured for the package.  
   
-### User API Token
+### User API token
 
 This is the user API token you get when installing your app (`OAuth Access Token` field). This token belongs 
 to the user that installed the Slack app, and you can use it in the Slingr app to call the Slack API on behalf 
 of this user instead of using the bot. Please check the [Javascript API](#javascript-api) docs below to indicate
 which token must be used.
 
-**Name**: userApiToken **Type**: text **Mandatory**: false
+**Name**: `userApiToken` **Type**: text **Mandatory**: false
 
-### Bot API Token
+### Bot API token
 
 
 This is the bot API token you get when installing your app (`Bot User OAuth Access Token` field). This is a bot
 token, and it has some limitations when using the web API (see [bot methods](https://api.slack.com/bot-users#bot-methods)).
 When you use the package, you can indicate which token you need to use.
 
-**Name**: botApiToken **Type**: text **Mandatory**: true
+**Name**: `botApiToken` **Type**: text **Mandatory**: true
 
-### Verification Token
+### Verification token
 
 The verification token is used to validate the slash commands and interactive messages hitting the endpoint. You
 will find it in the `Basic information` of your app in the field `Verification Token`.
 
-**Name**: verificationToken **Type**: text **Mandatory**: false
+**Name**: `verificationToken` **Type**: text **Mandatory**: false
 
-### Slash Commands URL
+### Slash commands URL
 
 This is a read-only field and indicates the URL you have to configure in your Slack app to receive slash commands
 in your Slingr app.<br>
 The Slash Commands URL is a generated URL that follows the pattern `https://<appName>.slingrs.io/<environment>/services/<httpServiceName>/slashCommands`
 
 To set this URL go to your Slack app page:<br>
-Slash Commands > Create New Command > Request URL
+`Slash Commands > Create New Command > Request URL`
 
-### Interactive Messages URL
+### Interactive messages URL
 
 This is a read-only field and indicates the URL you have to configure in your Slack app to receive interactive
 messages in your Slingr app.<br>
 The Interactive Messages URL is a generated URL that follows the pattern `https://<appName>.slingrs.io/<environment>/services/<httpServiceName>/interactiveMessages`
 
 To set this URL go to your Slack app page:<br>
-Interactivity & Shortcuts > Request URL
+`Interactivity & Shortcuts > Request URL`
 
-### Options Load URL
+### Options load URL
 
 This is a read-only field and indicates the URL you have to configure in your Slack app to be able to provide
 custom options in dropdowns. This is configured in the same place where you configure the interactive messages
@@ -96,7 +96,7 @@ URL.<br>
 The Options Load URL is a generated URL that follows the pattern `https://<appName>.slingrs.io/<environment>/services/<httpServiceName>/optionLoads`
 
 To set this URL go to your Slack app page:<br>
-Interactivity & Shortcuts > Select Menus > Options Load URL
+`Interactivity & Shortcuts > Select Menus > Options Load URL`
 
 ### Events URL
 
@@ -106,12 +106,12 @@ a test request to validate the URL, which will be valid only when the package an
 The Events URL is a generated URL that follows the pattern `https://<appName>.slingrs.io/<environment>/services/<httpServiceName>/sync/slackEvents`
 
 To set this URL go to your Slack app page:<br>
-Event Subscriptions > Request URL
+`Event Subscriptions > Request URL`
  
 ## Javascript API
 
-### HTTP Requests
-You can make `POST`,`GET` requests to the [slack API](https://api.slack.com) like this:
+### HTTP requests
+You can make `GET`,`POST` requests to the [slack API](https://api.slack.com) like this:
 ```javascript
 var response = pkg.slack.user.post('/reactions.add', body)
 var response = pkg.slack.user.post('/reactions.add')
@@ -133,3 +133,4 @@ Slingr is a low-code rapid application development platform that accelerates dev
 # License
 
 This package is licensed under the Apache License 2.0. See the `LICENSE` file for more details.
+
