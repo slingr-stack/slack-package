@@ -1,5 +1,7 @@
 # Overview
 
+Repo: [https://github.com/slingr-stack/slack-package](https://github.com/slingr-stack/slack-package)
+
 The Slack package supports the following features:
 
 - Shortcuts for web API
