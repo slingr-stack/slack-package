@@ -4,7 +4,8 @@
     "dependencies": [
         {
             "type": "service",
-            "name": "http"
+            "name": "http",
+            "version": "v1.8.6"
         }
     ],
     "configuration": [
