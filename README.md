@@ -158,7 +158,7 @@ exports.slashCommand = function () {
     ]
   };
 };
-exports.optionLoads = function () {
+exports.optionLoad = function () {
   const options = [
     {
       text: {
