@@ -29,7 +29,8 @@
             "name": "slackLibrary",
             "label": "Slack Library",
             "description": "The name of the library where the package will call the corresponding methods for responding to Option Loads and Slash Commands events.",
-            "type": "text"
+            "type": "text",
+            "required": true
         },
         {
             "name": "eventsUrl",
