@@ -27,6 +27,11 @@
             "type": "text"
         },
         {
+            "name": "slackLibrary",
+            "label": "Slack Library",
+            "type": "text"
+        },
+        {
             "name": "eventsUrl",
             "label": "Events URL",
             "description": "This is the URL you need to set as 'Request URL' in 'Event Subscriptions' page of your app. Keep in mind that the endpoint must be deployed in order to interact with the Slack configuration page. Callback function must be defined on libraries: app.controller.slack.slackEvent",
@@ -52,7 +57,7 @@
             "label": "Options load URL",
             "description": "This is the URL you need to set as 'Options Load URL' in 'Interactive Messages' page of your app.",
             "type": "label",
-            "value": "config.SERVER_URL+'/'+config.ENV+'/services/'+config.SERVICE_NAME+'/optionsLoad/'"
+            "value": "config.SERVER_URL+'/'+config.ENV+'/services/'+config.SERVICE_NAME+'/sync/optionsLoad/'"
         },
         {
             "name": "SLACK_API_BASE_URL",
