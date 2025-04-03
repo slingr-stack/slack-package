@@ -21,7 +21,6 @@ listeners.defaultSlackEvents = {
             } else {
                 sys.logs.info('[slack] Valid slack event received. Triggering event.');
                 sys.events.triggerEvent("slack:slackEvent", event.data);
-                return app.controller.slack.slackEvent(event.data);
             }
         } else {
             sys.logs.warn('[slack] Invalid verification token for event');
@@ -44,7 +43,7 @@ listeners.defaultSlashCommands = {
         if (pkg.slack.utils.verifyToken(event.data.body.token) || pkg.slack.utils.verifyToken(event.data.body.payload.token)) {
                 sys.logs.info('[slack] Valid slash command received. Triggering package event.');
                 sys.events.triggerEvent("slack:slashCommand", event.data);
-                return app.controller.slack.slashCommand(event.data);
+                return app[pkg.slack.utils.getConfiguration("slackLibrary")].slashCommand(event.data);
         } else {
             sys.logs.warn('[slack] Invalid verification token for event slash command');
         }
@@ -72,12 +71,12 @@ listeners.defaultInteractiveMessages = {
     }
 };
 
-listeners.defaultOptonLoads = {
+listeners.defaultOptionLoads = {
     label: 'Catch Option Loads',
     type: 'service',
     options: {
         service: 'http',
-        event: 'webhook',
+        event: 'webhookSync',
         matching: {
             path: '/optionsLoad',
         }
@@ -87,6 +86,7 @@ listeners.defaultOptonLoads = {
         if (pkg.slack.utils.verifyToken(event.data.body.token) || pkg.slack.utils.verifyToken(event.data.body.payload.token)) {
             sys.logs.info('[slack] Valid option load received. Triggering package event.');
             sys.events.triggerEvent("slack:optionsLoad", event.data);
+            return app[pkg.slack.utils.getConfiguration("slackLibrary")].optionLoad(event.data);
         } else {
             sys.logs.warn('[slack] Invalid verification token for event options load');
         }

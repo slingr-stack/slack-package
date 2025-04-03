@@ -5,7 +5,7 @@
         {
             "type": "service",
             "name": "http",
-            "version": "v1.7.0"
+            "version": "v1.8.6"
         }
     ],
     "configuration": [
@@ -25,6 +25,13 @@
             "label": "Verification token",
             "description": "Token provided to verify that requests are actually coming from Slack (Basic Information -> Verification Token)",
             "type": "text"
+        },
+        {
+            "name": "slackLibrary",
+            "label": "Slack Library",
+            "description": "The name of the library where the package will call the corresponding methods for responding to Option Loads and Slash Commands events.",
+            "type": "text",
+            "required": true
         },
         {
             "name": "eventsUrl",
@@ -52,7 +59,7 @@
             "label": "Options load URL",
             "description": "This is the URL you need to set as 'Options Load URL' in 'Interactive Messages' page of your app.",
             "type": "label",
-            "value": "config.SERVER_URL+'/'+config.ENV+'/services/'+config.SERVICE_NAME+'/optionsLoad/'"
+            "value": "config.SERVER_URL+'/'+config.ENV+'/services/'+config.SERVICE_NAME+'/sync/optionsLoad/'"
         },
         {
             "name": "SLACK_API_BASE_URL",
