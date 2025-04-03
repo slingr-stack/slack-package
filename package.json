@@ -4,8 +4,7 @@
     "dependencies": [
         {
             "type": "service",
-            "name": "http",
-            "version": "v1.7.0"
+            "name": "http"
         }
     ],
     "configuration": [
@@ -29,6 +28,7 @@
         {
             "name": "slackLibrary",
             "label": "Slack Library",
+            "description": "The name of the library where the package will call the corresponding methods for responding to Option Loads and Slash Commands events.",
             "type": "text"
         },
         {

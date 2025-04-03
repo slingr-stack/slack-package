@@ -65,6 +65,16 @@ When you use the package, you can indicate which token you need to use.
 
 **Name**: `botApiToken` **Type**: text **Mandatory**: true
 
+### Slack Library
+
+
+This is the name of the library that the app should have to handle the synchronous webhooks in order to return a custom response.
+This library should export the methods `slashCommand` and `optionLoad` in case you want to handle those events.
+
+Make sure that the value of this field matches the library name, otherwise it will generate an error.
+
+**Name**: `slackLibrary` **Type**: text **Mandatory**: true
+
 ### Verification token
 
 The verification token is used to validate the slash commands and interactive messages hitting the endpoint. You
@@ -76,8 +86,7 @@ will find it in the `Basic information` of your app in the field `Verification T
 
 This is a read-only field and indicates the URL you have to configure in your Slack app to receive slash commands
 in your Slingr app.<br>
-The Slash Commands URL is a generated URL that follows the pattern `https://<appName>.slingrs.io/<environment>/services/<httpServiceName>/slashCommands`
-
+The Slash Commands URL is a generated URL that follows the pattern `https://<appName>.slingrs.io/<environment>/services/<httpServiceName>/sync/slashCommands`
 To set this URL go to your Slack app page:<br>
 `Slash Commands > Create New Command > Request URL`
 
@@ -95,7 +104,7 @@ To set this URL go to your Slack app page:<br>
 This is a read-only field and indicates the URL you have to configure in your Slack app to be able to provide
 custom options in dropdowns. This is configured in the same place where you configure the interactive messages
 URL.<br>
-The Options Load URL is a generated URL that follows the pattern `https://<appName>.slingrs.io/<environment>/services/<httpServiceName>/optionLoads`
+The Options Load URL is a generated URL that follows the pattern `https://<appName>.slingrs.io/<environment>/services/<httpServiceName>/sync/optionLoads`
 
 To set this URL go to your Slack app page:<br>
 `Interactivity & Shortcuts > Select Menus > Options Load URL`
@@ -119,6 +128,63 @@ var response = pkg.slack.user.post('/reactions.add', body)
 var response = pkg.slack.user.post('/reactions.add')
 var response = pkg.slack.user.get('/team.billableInfo')
 ```
+
+### Slack Library
+You should add a library like this with the name set as the “Slack Library” property in order to handle events sent by slack that needs a response like “Slash Commands” and “Option Loads”.
+```javascript
+exports.slashCommand = function () {
+  return {
+    response_type: 'in_channel', // El mensaje será visible para todos en el canal
+    text: 'Selecciona una opción:',
+    attachments: [
+      {
+        text: 'Elige una opción',
+        fallback: '¡Tu plataforma no soporta interacciones!',
+        callback_id: 'option_load_1',
+        actions: [
+          {
+            name: 'option_load',
+            text: 'Cargando opciones...',
+            type: 'select',
+            data_source: 'external', // Indica que la fuente de datos es externa
+            placeholder: {
+              type: 'plain_text',
+              text: 'Cargando...'
+            },
+            action_id: 'load_options'
+          }
+        ]
+      }
+    ]
+  };
+};
+exports.optionLoads = function () {
+  const options = [
+    {
+      text: {
+        type: 'plain_text',
+        text: 'Opción 1'
+      },
+      value: 'option1'
+    },
+    {
+      text: {
+        type: 'plain_text',
+        text: 'Opción 2'
+      },
+      value: 'option2'
+    },
+    {
+      text: {
+        type: 'plain_text',
+        text: 'Opción 3'
+      },
+      value: 'option3'
+    }];
+  return JSON.stringify({options: options});
+};
+```
+
 
 Please take a look at the documentation of the [HTTP service](https://github.com/slingr-stack/http-service)
 for more information about generic requests.
