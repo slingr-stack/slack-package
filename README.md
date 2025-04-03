@@ -181,7 +181,7 @@ exports.optionLoads = function () {
       },
       value: 'option3'
     }];
-  return JSON.stringify({options: options});
+  return {options: options};
 };
 ```
 
