@@ -43,9 +43,8 @@ listeners.defaultSlashCommands = {
         if (pkg.slack.utils.verifyToken(event.data.body.token) || pkg.slack.utils.verifyToken(event.data.body.payload.token)) {
                 sys.logs.info('[slack] Valid slash command received. Triggering package event.');
                 sys.events.triggerEvent("slack:slashCommand", event.data);
-                if (pkg.slack.utils.getConfiguration("slashCommandEnabled")) {
-                    //return pkg.slack.utils.getConfiguration("slashCommandScript");
-                    return pkg.slack.config.actionScript({eventData: event.data});
+                if (pkg.slack.utils.getConfiguration("slashCommandsEnabled")) {
+                    return pkg.slack.config.slashCommandsScript({eventData: event.data});
                 } else {
                     return "Command received!";
                 }
@@ -92,6 +91,8 @@ listeners.defaultOptionLoads = {
             sys.logs.info('[slack] Valid option load received. Triggering package event.');
             if (pkg.slack.utils.getConfiguration("optionLoadEnabled")) {
                 return pkg.slack.config.optionLoadScript({eventData: event.data});
+            } else {
+                return "Option Load request received!";
             }
         } else {
             sys.logs.warn('[slack] Invalid verification token for event options load');

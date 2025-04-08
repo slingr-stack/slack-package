@@ -47,6 +47,26 @@
             "visibility": "config.optionLoadEnabled === true"
         },
         {
+            "name": "slashCommandsEnabled",
+            "label": "Slash Commands Enabled",
+            "description": "Determines whether a Option Load script is needed or not.",
+            "type": "toggle",
+            "multiplicity": "one",
+            "required": true
+        },
+        {
+            "name": "slashCommandsScript",
+            "label": "Slash Commands Script",
+            "description": "The script to be executed when an Option Loads request is performed by Slack.",
+            "type": "script",
+            "multiplicity": "one",
+            "typeOptions": {
+                "parameters": ["eventData"]
+            },
+            "required": "config.optionLoadEnabled === true",
+            "visibility": "config.optionLoadEnabled === true"
+        },
+        {
             "name": "eventsUrl",
             "label": "Events URL",
             "description": "This is the URL you need to set as 'Request URL' in 'Event Subscriptions' page of your app. Keep in mind that the endpoint must be deployed in order to interact with the Slack configuration page. Callback function must be defined on libraries: app.controller.slack.slackEvent",
