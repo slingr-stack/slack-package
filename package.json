@@ -63,8 +63,8 @@
             "typeOptions": {
                 "parameters": ["eventData"]
             },
-            "required": "config.optionLoadEnabled === true",
-            "visibility": "config.optionLoadEnabled === true"
+            "required": "config.slashCommandsEnabled === true",
+            "visibility": "config.slashCommandsEnabled === true"
         },
         {
             "name": "eventsUrl",
