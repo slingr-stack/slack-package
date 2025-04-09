@@ -27,9 +27,29 @@
             "type": "text"
         },
         {
+            "name": "slashCommandsEnabled",
+            "label": "Slash Commands Enabled",
+            "description": "Determines whether a Slash Command script is needed or not.",
+            "type": "toggle",
+            "multiplicity": "one",
+            "required": true
+        },
+        {
+            "name": "slashCommandsScript",
+            "label": "Slash Commands Script",
+            "description": "The script to be executed when an Slash Command request is performed by Slack.",
+            "type": "script",
+            "multiplicity": "one",
+            "typeOptions": {
+                "parameters": ["eventData"]
+            },
+            "required": "config.slashCommandsEnabled === true",
+            "visibility": "config.slashCommandsEnabled === true"
+        },
+        {
             "name": "optionLoadEnabled",
             "label": "Option Load Enabled",
-            "description": "Determines whether a Option Load script is needed or not.",
+            "description": "Determines whether an Option Load script is needed or not.",
             "type": "toggle",
             "multiplicity": "one",
             "required": true
@@ -45,26 +65,6 @@
             },
             "required": "config.optionLoadEnabled === true",
             "visibility": "config.optionLoadEnabled === true"
-        },
-        {
-            "name": "slashCommandsEnabled",
-            "label": "Slash Commands Enabled",
-            "description": "Determines whether a Option Load script is needed or not.",
-            "type": "toggle",
-            "multiplicity": "one",
-            "required": true
-        },
-        {
-            "name": "slashCommandsScript",
-            "label": "Slash Commands Script",
-            "description": "The script to be executed when an Option Loads request is performed by Slack.",
-            "type": "script",
-            "multiplicity": "one",
-            "typeOptions": {
-                "parameters": ["eventData"]
-            },
-            "required": "config.slashCommandsEnabled === true",
-            "visibility": "config.slashCommandsEnabled === true"
         },
         {
             "name": "eventsUrl",
