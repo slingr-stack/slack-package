@@ -58,22 +58,39 @@ which token must be used.
 
 ### Bot API token
 
-
 This is the bot API token you get when installing your app (`Bot User OAuth Access Token` field). This is a bot
 token, and it has some limitations when using the web API (see [bot methods](https://api.slack.com/bot-users#bot-methods)).
 When you use the package, you can indicate which token you need to use.
 
 **Name**: `botApiToken` **Type**: text **Mandatory**: true
 
-### Slack Library
+### Slash Commands Enabled
 
+This flag determines whether a slash commands script is required.
 
-This is the name of the library that the app should have to handle the synchronous webhooks in order to return a custom response.
-This library should export the methods `slashCommand` and `optionLoad` in case you want to handle those events.
+**Name**: `slashCommandsEnabled` **Type**: toggle **Mandatory**: true
 
-Make sure that the value of this field matches the library name, otherwise it will generate an error.
+### Slash Commands Script
 
-**Name**: `slackLibrary` **Type**: text **Mandatory**: true
+This script handles synchronous webhooks to return custom responses for slash commands.
+
+The script will have access to the event object sent by Slack, allowing you to use it within the script if needed.
+
+**Name**: `optionLoadScript` **Type**: script **Mandatory**: true
+
+### Option Load Enabled
+
+This flag determines whether an option load script is required.
+
+**Name**: `optionLoadEnabled` **Type**: toggle **Mandatory**: true
+
+### Option Load Script
+
+This script manages synchronous webhooks to return the necessary data for option loads in Slack interactive messages.
+
+The script will have access to the event object sent by Slack, allowing you to use it within the script if needed.
+
+**Name**: `optionLoadScript` **Type**: script **Mandatory**: true
 
 ### Verification token
 
@@ -129,62 +146,50 @@ var response = pkg.slack.user.post('/reactions.add')
 var response = pkg.slack.user.get('/team.billableInfo')
 ```
 
-### Slack Library
-You should add a library like this with the name set as the “Slack Library” property in order to handle events sent by slack that needs a response like “Slash Commands” and “Option Loads”.
+### Making Slash Commands and Option Loads scripts
+In order to give custom responses to Slash Commands and Option Loads requests you should make scripts like these and set them in the package configuration in the respective properties:
 ```javascript
-exports.slashCommand = function () {
+
+//Slash Commands script example
+function slashCommandsScript(eventData) {
   return {
-    response_type: 'in_channel', // El mensaje será visible para todos en el canal
+    response_type: 'in_channel',
     text: 'Selecciona una opción:',
     attachments: [
-      {
-        text: 'Elige una opción',
+      { text: 'Elige una opción',
         fallback: '¡Tu plataforma no soporta interacciones!',
         callback_id: 'option_load_1',
-        actions: [
-          {
-            name: 'option_load',
-            text: 'Cargando opciones...',
-            type: 'select',
-            data_source: 'external', // Indica que la fuente de datos es externa
-            placeholder: {
-              type: 'plain_text',
-              text: 'Cargando...'
-            },
-            action_id: 'load_options'
-          }
-        ]
-      }
-    ]
+        actions: [ {
+          name: 'option_load',
+          text: 'Cargando opciones...',
+          type: 'select',
+          data_source: 'external',
+          placeholder: {
+            type: 'plain_text',
+            text: 'Cargando...'
+          },
+          action_id: 'load_options'
+        } ]
+      } ]
   };
-};
-exports.optionLoad = function () {
-  const options = [
-    {
+}
+slashCommandsScript(context.eventData); //as this script will be executed in an eval method you need to call the parameter as a property of the global object "context"
+
+//Option Loads script exampl
+function optionLoadScript(eventData){
+  return {
+    options: [{
       text: {
         type: 'plain_text',
         text: 'Opción 1'
       },
       value: 'option1'
-    },
-    {
-      text: {
-        type: 'plain_text',
-        text: 'Opción 2'
-      },
-      value: 'option2'
-    },
-    {
-      text: {
-        type: 'plain_text',
-        text: 'Opción 3'
-      },
-      value: 'option3'
-    }];
-  return {options: options};
-};
-```
+    }]
+  };
+}
+optionLoadScript(context.eventData); //as this script will be executed in an eval method you need to call the parameter as a property of the global object "context"
 
+```
 
 Please take a look at the documentation of the [HTTP service](https://github.com/slingr-stack/http-service)
 for more information about generic requests.

@@ -27,11 +27,44 @@
             "type": "text"
         },
         {
-            "name": "slackLibrary",
-            "label": "Slack Library",
-            "description": "The name of the library where the package will call the corresponding methods for responding to Option Loads and Slash Commands events.",
-            "type": "text",
+            "name": "slashCommandsEnabled",
+            "label": "Slash Commands Enabled",
+            "description": "Determines whether a Slash Command script is needed or not.",
+            "type": "toggle",
+            "multiplicity": "one",
             "required": true
+        },
+        {
+            "name": "slashCommandsScript",
+            "label": "Slash Commands Script",
+            "description": "The script to be executed when an Slash Command request is performed by Slack.",
+            "type": "script",
+            "multiplicity": "one",
+            "typeOptions": {
+                "parameters": ["eventData"]
+            },
+            "required": "config.slashCommandsEnabled === true",
+            "visibility": "config.slashCommandsEnabled === true"
+        },
+        {
+            "name": "optionLoadEnabled",
+            "label": "Option Load Enabled",
+            "description": "Determines whether an Option Load script is needed or not.",
+            "type": "toggle",
+            "multiplicity": "one",
+            "required": true
+        },
+        {
+            "name": "optionLoadScript",
+            "label": "Option Load Script",
+            "description": "The script to be executed when an Option Loads request is performed by Slack.",
+            "type": "script",
+            "multiplicity": "one",
+            "typeOptions": {
+                "parameters": ["eventData"]
+            },
+            "required": "config.optionLoadEnabled === true",
+            "visibility": "config.optionLoadEnabled === true"
         },
         {
             "name": "eventsUrl",
@@ -83,11 +116,6 @@
             "label": "Interactive Message",
             "name": "interactiveMessage",
             "description": "Happens when a button in a message is pushed."
-        },
-        {
-            "label": "Options Load",
-            "name": "optionsLoad",
-            "description": "Happens when Slack needs to populate a dropdown with options."
         }
     ],
     "metadata": [
