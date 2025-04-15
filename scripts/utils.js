@@ -47,12 +47,8 @@ exports.createWrapper = function (wrapperName, code) {
  */
 function escapeForEval(code) {
     return code
-        .replace(/\\/g, '\\\\')
-        .replace(/`/g, '\\`')
-        .replace(/\/\*/g, '/\\*')
-        .replace(/\*\//g, '*\\/')
-        .replace(/\/\/(.+)?$/gm, '// $1')
-        .replace(/\r/g, '')
-        .replace(/\t/g, '  ');
+        .replace(/\/\*[\s\S]*?\*\//g, '')
+        .replace(/\/\/.*$/gm, '')
+        .replace(/`/g, '\\`');
 }
 
