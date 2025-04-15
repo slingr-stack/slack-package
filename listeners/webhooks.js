@@ -87,7 +87,7 @@ listeners.defaultOptionLoads = {
         }
     },
     callback: function(event) {
-        sys.logs.info('[slack] Received slack options load webhook. Processing and triggering a package event.');
+        sys.logs.info('[slack] Received slack options load webhook. Processing event.');
         if (pkg.slack.utils.verifyToken(event.data.body.token) || pkg.slack.utils.verifyToken(event.data.body.payload.token)) {
             sys.logs.info('[slack] Valid option load received.');
             if (pkg.slack.utils.getConfiguration("optionLoadEnabled") === "true") {
