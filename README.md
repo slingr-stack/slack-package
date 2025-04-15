@@ -68,7 +68,7 @@ When you use the package, you can indicate which token you need to use.
 
 This flag determines whether a slash commands script is required.
 
-**Name**: `slashCommandsEnabled` **Type**: toggle **Mandatory**: true
+**Name**: `slashCommandsEnabled` **Type**: toggle **Mandatory**: false
 
 ### Slash Commands Script
 
@@ -82,7 +82,7 @@ The script will have access to the event object sent by Slack, allowing you to u
 
 This flag determines whether an option load script is required.
 
-**Name**: `optionLoadEnabled` **Type**: toggle **Mandatory**: true
+**Name**: `optionLoadEnabled` **Type**: toggle **Mandatory**: false
 
 ### Option Load Script
 

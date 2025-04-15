@@ -34,7 +34,24 @@ exports.verifyToken = function (token) {
  */
 exports.createWrapper = function (wrapperName, code) {
     return `function ${wrapperName}(eventData) {
-        ${code}
+        ${escapeForEval(code)}
     }
     ${wrapperName}(context.eventData);`;
 };
+
+/**
+ * Escapes potentially problematic characters for safe use in dynamically evaluated code.
+ *
+ * @param {string} code - The raw source code to sanitize before injecting into an eval wrapper.
+ * @returns {string} - A sanitized, safe-to-eval string version of the input code.
+ */
+function escapeForEval(code) {
+    return code
+        .replace(/\\/g, '\\\\')
+        .replace(/`/g, '\\`')
+        .replace(/\/\*/g, '/\\*')
+        .replace(/\*\//g, '*\\/')
+        .replace(/\r/g, '')
+        .replace(/\t/g, '  ');
+}
+
