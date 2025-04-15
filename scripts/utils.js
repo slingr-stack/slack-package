@@ -51,6 +51,7 @@ function escapeForEval(code) {
         .replace(/`/g, '\\`')
         .replace(/\/\*/g, '/\\*')
         .replace(/\*\//g, '*\\/')
+        .replace(/\/\/(.+)?$/gm, '// $1')
         .replace(/\r/g, '')
         .replace(/\t/g, '  ');
 }
