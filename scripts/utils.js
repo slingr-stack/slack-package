@@ -24,3 +24,31 @@ exports.getConfiguration = function (property) {
 exports.verifyToken = function (token) {
     return token === config.get("verificationToken");
 };
+
+/**
+ * Creates a wrapper function to execute custom code through eval method.
+ *
+ * @param {string} wrapperName           - The name of the wrapper function
+ * @param {string} code                 - The code to be executed inside the wrapper.
+ * @return {string}                    - The string wrapper function.
+ */
+exports.createWrapper = function (wrapperName, code) {
+    return `function ${wrapperName}(eventData) {
+        ${escapeForEval(code)}
+    }
+    ${wrapperName}(context.eventData);`;
+};
+
+/**
+ * Escapes potentially problematic characters for safe use in dynamically evaluated code.
+ *
+ * @param {string} code - The raw source code to sanitize before injecting into an eval wrapper.
+ * @returns {string} - A sanitized, safe-to-eval string version of the input code.
+ */
+function escapeForEval(code) {
+    return code
+        .replace(/\/\*[\s\S]*?\*\//g, '')
+        .replace(/\/\/.*$/gm, '')
+        .replace(/`/g, '\\`');
+}
+

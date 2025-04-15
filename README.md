@@ -68,7 +68,7 @@ When you use the package, you can indicate which token you need to use.
 
 This flag determines whether a slash commands script is required.
 
-**Name**: `slashCommandsEnabled` **Type**: toggle **Mandatory**: true
+**Name**: `slashCommandsEnabled` **Type**: toggle **Mandatory**: false
 
 ### Slash Commands Script
 
@@ -82,7 +82,7 @@ The script will have access to the event object sent by Slack, allowing you to u
 
 This flag determines whether an option load script is required.
 
-**Name**: `optionLoadEnabled` **Type**: toggle **Mandatory**: true
+**Name**: `optionLoadEnabled` **Type**: toggle **Mandatory**: false
 
 ### Option Load Script
 
@@ -151,44 +151,37 @@ In order to give custom responses to Slash Commands and Option Loads requests yo
 ```javascript
 
 //Slash Commands script example
-function slashCommandsScript(eventData) {
-  return {
-    response_type: 'in_channel',
-    text: 'Selecciona una opción:',
-    attachments: [
-      { text: 'Elige una opción',
-        fallback: '¡Tu plataforma no soporta interacciones!',
-        callback_id: 'option_load_1',
-        actions: [ {
-          name: 'option_load',
-          text: 'Cargando opciones...',
-          type: 'select',
-          data_source: 'external',
-          placeholder: {
-            type: 'plain_text',
-            text: 'Cargando...'
-          },
-          action_id: 'load_options'
-        } ]
+return {
+  response_type: 'in_channel',
+  text: 'Selecciona una opción:',
+  attachments: [
+    { text: 'Elige una opción',
+      fallback: '¡Tu plataforma no soporta interacciones!',
+      callback_id: 'option_load_1',
+      actions: [ {
+        name: 'option_load',
+        text: 'Cargando opciones...',
+        type: 'select',
+        data_source: 'external',
+        placeholder: {
+          type: 'plain_text',
+          text: 'Cargando...'
+        },
+        action_id: 'load_options'
       } ]
-  };
-}
-slashCommandsScript(context.eventData); //as this script will be executed in an eval method you need to call the parameter as a property of the global object "context"
+    } ]
+};
 
 //Option Loads script exampl
-function optionLoadScript(eventData){
-  return {
-    options: [{
-      text: {
-        type: 'plain_text',
-        text: 'Opción 1'
-      },
-      value: 'option1'
-    }]
-  };
-}
-optionLoadScript(context.eventData); //as this script will be executed in an eval method you need to call the parameter as a property of the global object "context"
-
+return {
+  options: [{
+    text: {
+      text: 'Opción 1',
+      type: 'plain_text'
+    },
+    value: 'option1'
+  }]
+};
 ```
 
 Please take a look at the documentation of the [HTTP service](https://github.com/slingr-stack/http-service)

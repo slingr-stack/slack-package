@@ -32,7 +32,7 @@
             "description": "Determines whether a Slash Command script is needed or not.",
             "type": "toggle",
             "multiplicity": "one",
-            "required": true
+            "required": false
         },
         {
             "name": "slashCommandsScript",
@@ -52,7 +52,7 @@
             "description": "Determines whether an Option Load script is needed or not.",
             "type": "toggle",
             "multiplicity": "one",
-            "required": true
+            "required": false
         },
         {
             "name": "optionLoadScript",
