@@ -24,3 +24,17 @@ exports.getConfiguration = function (property) {
 exports.verifyToken = function (token) {
     return token === config.get("verificationToken");
 };
+
+/**
+ * Creates a wrapper function to execute custom code through eval method.
+ *
+ * @param {string} wrapperName           - The name of the wrapper function
+ * @param {string} code                 - The code to be executed inside the wrapper.
+ * @return {string}                    - The string wrapper function.
+ */
+exports.createWrapper = function (wrapperName, code) {
+    return `function ${wrapperName}(eventData) {
+        ${code}
+    }
+    ${wrapperName}(context.eventData);`;
+};
