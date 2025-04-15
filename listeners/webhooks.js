@@ -39,7 +39,7 @@ listeners.defaultSlashCommands = {
         }
     },
     callback: function(event) {
-        sys.logs.info('[slack] Received slack slash command webhook. Processing and triggering a package event.');
+        sys.logs.info('[slack] Received slack slash command webhook. Processing event.');
         if (pkg.slack.utils.verifyToken(event.data.body.token) || pkg.slack.utils.verifyToken(event.data.body.payload.token)) {
                 sys.logs.info('[slack] Valid slash command received.');
                 if (pkg.slack.utils.getConfiguration("slashCommandsEnabled") === "true") {
